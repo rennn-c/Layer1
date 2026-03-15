@@ -46,6 +46,18 @@ if %errorlevel% neq 0 (
 )
 echo [OK] USBMonitor.exe built.
 
+echo [1.5/3] Compiling UI...
+cl /EHsc /O2 /W3 ^
+   /I"%SRC%" ^
+   %SRC%\monitor_ui.cpp ^
+   /Fe:%OUT%\USBMonitorUI.exe ^
+   /link comctl32.lib user32.lib shell32.lib gdi32.lib
+if %errorlevel% neq 0 (
+    echo [FAIL] UI compilation failed.
+    exit /b 1
+)
+echo [OK] USBMonitorUI.exe built.
+
 :: ── Build MSI ─────────────────────────────────────────────────────────────────
 echo [2/3] Building MSI installer...
 candle %INSTALLER%\installer.wxs -o %OUT%\installer.wixobj

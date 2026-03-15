@@ -9,7 +9,7 @@
            UpgradeCode="A1B2C3D4-E5F6-7890-ABCD-EF1234567890">
 
     <Package InstallerVersion="200" Compressed="yes"
-             InstallScope="perMachine" />
+         InstallScope="perMachine" Platform="x64" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
     <MediaTemplate EmbedCab="yes" />
@@ -31,7 +31,7 @@
 
     <!-- ── Service Executable ── -->
     <ComponentGroup Id="ServiceComponents" Directory="INSTALLFOLDER">
-      <Component Id="ServiceInstall" Guid="*">
+      <Component Id="ServiceInstall" Guid="*" Win64="yes">
         <File Id="ServiceEXE"
               Source="..\build\USBMonitor.exe"
               KeyPath="yes" />
